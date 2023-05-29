@@ -125,4 +125,12 @@ return {
       vim.g.tmux_navigator_no_mappings = 1
     end,
   },
+
+  {
+    'mhanberg/output-panel.nvim',
+    keys = {
+      { '<leader>uo', '<cmd>OutputPanel<cr>', desc = 'Toggle LSP output panel' },
+    },
+    config = true,
+  },
 }
