@@ -67,6 +67,9 @@ return {
   -- add more treesitter parsers
   {
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'windwp/nvim-ts-autotag',
+    },
     opts = function(_, opts)
       -- add tsx and treesitter
       vim.list_extend(opts.ensure_installed, {
@@ -89,6 +92,10 @@ return {
         'toml',
         'vue',
       })
+
+      opts.autotag = {
+        enable = true,
+      }
     end,
   },
 }
