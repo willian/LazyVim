@@ -10,6 +10,7 @@ return {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'hrsh7th/cmp-emoji',
+      'js-everts/cmp-tailwind-colors',
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -49,6 +50,19 @@ return {
             fallback()
           end
         end, { 'i', 's' }),
+      })
+
+      opts.formatting = vim.tbl_extend('force', opts.formatting, {
+        format = function(entry, item)
+          local new_item = require('cmp-tailwind-colors').format(entry, item)
+          local icons = require('lazyvim.config').icons.kinds
+
+          if icons[new_item.kind] then
+            new_item.kind = icons[new_item.kind] .. new_item.kind
+          end
+
+          return new_item
+        end,
       })
     end,
   },
@@ -97,5 +111,14 @@ return {
         enable = true,
       }
     end,
+  },
+
+  {
+    'NvChad/nvim-colorizer.lua',
+    opts = {
+      user_default_options = {
+        tailwind = true,
+      },
+    },
   },
 }
