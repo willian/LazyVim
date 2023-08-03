@@ -114,11 +114,7 @@ return {
   },
 
   {
-    'NvChad/nvim-colorizer.lua',
-    opts = {
-      user_default_options = {
-        tailwind = true,
-      },
-    },
+    'themaxmarchuk/tailwindcss-colors.nvim',
+    config = true,
   },
 }
